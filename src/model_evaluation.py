@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_a
 import logging
 
 # Ensure the "logs" directory exists
-log_dir = '../logs'
+log_dir = './logs'
 os.makedirs(log_dir, exist_ok=True)
 
 # logging configuration
@@ -94,15 +94,15 @@ def save_metrics(metrics: dict, file_path: str) -> None:
 
 def main():
     try:
-        clf = load_model('../models/model.pkl')
-        test_data = load_data('../data/processed/test_tfidf.csv')
+        clf = load_model('./models/model.pkl')
+        test_data = load_data('./Data/processed/test_tfidf.csv')
         
         X_test = test_data.iloc[:, :-1].values
         y_test = test_data.iloc[:, -1].values
 
         metrics = evaluate_model(clf, X_test, y_test)
         
-        save_metrics(metrics, '../reports/metrics.json')
+        save_metrics(metrics, './reports/metrics.json')
     except Exception as e:
         logger.error('Failed to complete the model evaluation process: %s', e)
         print(f"Error: {e}")

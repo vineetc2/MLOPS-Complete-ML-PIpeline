@@ -6,7 +6,7 @@ import logging
 
 
 # Ensure the "logs" directory exists
-log_dir = '../logs'
+log_dir = './logs'
 os.makedirs(log_dir, exist_ok=True)
 
 
@@ -70,11 +70,11 @@ def save_data(train_data: pd.DataFrame, test_data: pd.DataFrame, data_path: str)
 def main():
     try:
         test_size = 0.2
-        data_path = '..\\Data\\spam.csv'
+        data_path = './Data/spam.csv'
         df=load_data(data_url=data_path)
         final_df = preprocess_data(df)
         train_data, test_data = train_test_split(final_df, test_size=test_size, random_state=2)
-        save_data(train_data, test_data, data_path='../Data')
+        save_data(train_data, test_data, data_path='./Data')
     except Exception as e:
         logger.error('Failed to complete the data ingestion process: %s', e)
         print(f"Error: {e}")

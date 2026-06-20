@@ -11,7 +11,7 @@ nltk.download('punkt')
 nltk.download('punkt_tab')
 
 # Ensure the "logs" directory exists
-log_dir = '../logs'
+log_dir = './logs'
 os.makedirs(log_dir, exist_ok=True)
 
 # Setting up logger
@@ -83,8 +83,8 @@ def main(text_column='text', target_column='target'):
     """
     try:
         # Fetch the data from data/raw
-        train_data = pd.read_csv('../Data/raw/train.csv')
-        test_data = pd.read_csv('../Data/raw/test.csv')
+        train_data = pd.read_csv('./Data/raw/train.csv')
+        test_data = pd.read_csv('./Data/raw/test.csv')
         logger.debug('Data loaded properly')
 
         # Transform the data
@@ -92,7 +92,7 @@ def main(text_column='text', target_column='target'):
         test_processed_data = preprocess_df(test_data, text_column, target_column)
 
         # Store the data inside data/processed
-        data_path = os.path.join("../Data", "interim")
+        data_path = os.path.join("./Data", "interim")
         os.makedirs(data_path, exist_ok=True)
         
         train_processed_data.to_csv(os.path.join(data_path, "train_processed.csv"), index=False)
